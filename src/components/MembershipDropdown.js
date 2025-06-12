@@ -4,7 +4,7 @@ import config from '../config/config';
 
 const MembershipDropdown = ({ selectedMembership, onMembershipChange }) => {
   const [memberships, setMemberships] = useState([]);
-
+  console.log('MembershipDropdown component rendered', selectedMembership);
   useEffect(() => {
     const fetchMemberships = async () => {
       try {
@@ -19,7 +19,7 @@ const MembershipDropdown = ({ selectedMembership, onMembershipChange }) => {
   }, []);
 
   return (
-    <select value={selectedMembership} onChange={onMembershipChange} className="form-select">
+    <select value={selectedMembership._id} onChange={onMembershipChange} className="form-select">
       <option value="">Select Membership</option>
       {memberships.map(membership => (
         <option key={membership._id} value={membership._id}>

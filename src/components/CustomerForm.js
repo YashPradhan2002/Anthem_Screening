@@ -8,8 +8,9 @@ const CustomerForm = ({ customerId, onSubmitSuccess }) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
-  const [status, setStatus] = useState('Gold');
-  const [membershipId, setMembershipId] = useState('');
+  const [status, setStatus] = useState('Select Status');
+
+  const [membershipId, setMembershipId] = useState([]);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -17,6 +18,9 @@ const CustomerForm = ({ customerId, onSubmitSuccess }) => {
       fetchCustomer(customerId);
     }
   }, [customerId]);
+
+
+
 
   const fetchCustomer = async (id) => {
     try {
@@ -125,6 +129,7 @@ const CustomerForm = ({ customerId, onSubmitSuccess }) => {
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
+          <option value="">Select Status</option>
           <option value="Gold">Gold</option>
           <option value="Diamond">Diamond</option>
         </select>
